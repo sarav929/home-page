@@ -2,6 +2,9 @@ html,
 body {
     font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
+    color: black;
+    background-color: white;
+    z-index: -1;
 
     --box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
@@ -18,48 +21,54 @@ h2 {
     font-size: 1.5em;
 }
 
-/* /////////////////////// */
 
 header {
     display: flex;
     flex-direction: row;
-    background-image: url('img/pexels-didsss-6404236.jpg');
-    object-fit: cover;
-    padding: 5em 10em 8em 10em;
+    padding: 5em;
     justify-content: center;
-    clip-path: polygon(0 0, 100% 0, 100% 87%, 0% 100%);
+    
 
     & .photo {
+        background-image: url('img/unnamed\ \(1\).jpg');
+        background-size: 120%;
+        background-position: -50px -150px;
         min-width: 30em;
         min-height: 30em;
         display: flex;
         justify-content: center;
         align-items: flex-end;
         letter-spacing: .2em;
+        background-color: rgb(47, 47, 47);
+        color: white;
+        box-shadow: var(--box-shadow);
 
         & h1 {
-            font-size: 3em;
+            font-size: 4em;
+            text-shadow: var(--box-shadow);
             margin: 10px;
         }
     }
 }
 
+.header-image {
+    position: absolute;
+    background-color: #4a3865;;
+    clip-path: polygon(0 0, 100% 0, 100% 87%, 0% 100%);
+    width: 100%; 
+    height: 350px;
+    z-index: 0;    
+}
+
 .about-me {
     display: flex;
     align-items: center;
-}
-
-.photo {
-    background-color: black;
-    color: white;
-    box-shadow: var(--box-shadow);
-
+    z-index: 1;
 }
 
 .about {
     display: flex;
     flex-direction: column;
-    min-height: 30em;
     padding: 2em;
     margin: 0px;
     background-color: white;
@@ -69,6 +78,7 @@ header {
 
     & div {
         text-align: right;
+        letter-spacing: .5em;
     }
 
     & h1 {
@@ -77,20 +87,20 @@ header {
 
 }
 
-/* /////////////////////// */
-
 main {
-    padding: 2em 10em 5em 10em;
-    text
+    justify-content: center;
+    padding: 5em;
+    padding-top: 1em;
+    padding-bottom: 8em;
 
     & h1 {
-        margin: 10px 0;
+        margin: 1em 0;
     }
 }
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(30em, 1fr));
     grid-row: auto;
     gap: 2em;
 }
@@ -99,14 +109,14 @@ main {
     display: flex;
     flex-direction: column;
     box-shadow: var(--box-shadow);
-    min-width: 30em;
-    min-height: 25em;
+    transition: 300ms ease-in-out;
 
     & .screenshot {
-        background-color: blueviolet;
+        background-color: #8d8bcf;
         height: 60%;
         color: white;
         text-align: center;
+        min-height: 15em;
     }
 
     & .title {
@@ -120,28 +130,105 @@ main {
         padding: 0 1em 2em 1em;
     }
 
+    & .actions {
+        display: flex;
+        gap: 1em;
+        font-size: 1.2em;
+        align-items: center;
+
+        & img {
+            width: 1.2em;
+        }
+    }
 }
 
-/* /////////////////////// */
+.card:hover {
+    transform: scale(1.05);
+}
 
 footer {
     display: flex;
-    background-image: url('img/pexels-didsss-6404236.jpg');
+    background-color: #4a3865;
+    color: white;
     margin: 0;
-    padding: var(--padding);
+    padding: 3em;
+    font-size: 1.1em;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 2em;
 
     & .contact-me {
         display: flex;
         flex-direction: row-reverse;
     }
 
-    & .photo {
-        min-width: 30em;
-        min-height: 20em;      
-    }
-
     & h1 {
         margin:0;
+    }
+
+    & img, i {
+        filter: invert(100%);
+        width: 1em;
+    }
+
+    & .devicon-linkedin-plain {
+        filter: invert(0%);
+    }
+
+    & .footer-icons {
+        font-size: 1.5em;
+        letter-spacing: .3em;
+        line-height: 3em;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    header { 
+        display: flex;
+        justify-content: center;
+    }
+    .about-me {
+        display: block;
+    }
+    .card-container {
+        grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+    }
+    .card {
+        max-width: 400px;
+    }
+
+
+    .about {
+        max-width: 400px;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+
+    header { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .about-me {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+    }
+
+    .photo { 
+        max-width: 30em;
+        max-height: 30em;
+    }
+
+    .about {
+        max-width: 800px;
     }
 }
 
